@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:replace="~{layout/default::common-header(~{::title})}">
+  <!-- ~{::title} 代表本片段内的标签 传过去就替换common-header片段里的replace内容 -->
+  <meta charset="UTF-8" />
+  <title>search</title>
+
+</head>
+<body>
+  <div th:replace="~{layout/default::nav-lang}"></div>
+
+  <div class="row">
+    <h4 class="indigo-text center">Please enter a search term</h4>
+    <div class="col s6 offset-s3">
+      <div id="errorMessage" class="card-panel red lighten-2" th:if="${error}">
+        <span class="card-title" th:text="${error}"></span>
+      </div>
+      <form action="/postSearch" method="post" class="col s12">
+
+        <div class="row center">
+          <div class="input-field col s6 offset-s3">
+            <i class="mdi-action-search prefix"></i>
+            <input type="text" class="validate" id="search" name="search" />
+            <label for="search">Search</label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<th:block th:replace="~{layout/default::common-js(script)}"/>
+</body>
+</html>
